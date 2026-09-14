@@ -55,11 +55,15 @@ popularity baseline on identical candidate sets. Full methodology:
 | Metric | Two-tower | Popularity baseline |
 |---|---|---|
 | HitRate@5 | **0.32** | 0.10 |
-| NDCG@5 | **0.21** | 0.06 |
+| NDCG@5 | **0.21** | 0.055 |
 | HitRate@10 | **0.47** | 0.16 |
-| NDCG@10 | **0.257** | 0.077 |
+| NDCG@10 | **0.257** | 0.074 |
 
-**NDCG@10 uplift over popularity: 3.3×.** Regression gates in
+Single-seed (seed 0) point estimates, not averaged across seeds. The popularity
+baseline is computed from **training** interactions only (the held-out test item
+is excluded), so it is a true leave-one-out baseline.
+
+**NDCG@10 uplift over popularity: 3.5×.** Regression gates in
 [`eval/thresholds.yaml`](eval/thresholds.yaml) fail CI if this collapses.
 
 ## MovieLens 100k

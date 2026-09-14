@@ -31,7 +31,7 @@ def evaluate(movielens: str | None, dim: int, epochs: int, lr: float, seed: int)
     model_m = evaluate_model(
         model, test_pos, user_pos, dataset.n_items, dataset.item_features, seed=seed
     )
-    pop_m = evaluate_popularity(dataset.popularity(), test_pos, user_pos, dataset.n_items, seed=seed)
+    pop_m = evaluate_popularity(dataset.train_popularity(), test_pos, user_pos, dataset.n_items, seed=seed)
     uplift = round(model_m["ndcg@10"] / pop_m["ndcg@10"], 3) if pop_m["ndcg@10"] else float("inf")
     return {
         "dataset": "movielens" if movielens else "synthetic",

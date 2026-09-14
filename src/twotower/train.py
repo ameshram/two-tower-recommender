@@ -80,7 +80,7 @@ def main() -> None:
         model, test_pos, user_pos, dataset.n_items, dataset.item_features, seed=args.seed
     )
     pop_metrics = evaluate_popularity(
-        dataset.popularity(), test_pos, user_pos, dataset.n_items, seed=args.seed
+        dataset.train_popularity(), test_pos, user_pos, dataset.n_items, seed=args.seed
     )
     print(f"\nmodel:      {model_metrics}")
     print(f"popularity: {pop_metrics}")

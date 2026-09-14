@@ -23,9 +23,24 @@ class Dataset:
     item_features: np.ndarray | None = None  # (n_items, F) multi-hot, optional
 
     def popularity(self) -> np.ndarray:
+        """Item interaction counts over ALL positives (train + held-out)."""
         counts = np.zeros(self.n_items)
         for items in self.all_pos.values():
             for i in items:
+                counts[i] += 1
+        return counts
+
+    def train_popularity(self) -> np.ndarray:
+        """Item counts over TRAINING interactions only — excludes each user's
+        held-out last item (see ``leave_one_out``). The leave-one-out popularity
+        baseline must be scored with this, not ``popularity()``: counting the
+        test positives would leak the held-out item into the baseline it is
+        being compared against.
+        """
+        counts = np.zeros(self.n_items)
+        for items in self.all_pos.values():
+            train_items = items[:-1] if len(items) >= 2 else items
+            for i in train_items:
                 counts[i] += 1
         return counts
 

@@ -33,9 +33,15 @@ headline, and gate on it.
 | Metric | Two-tower | Popularity |
 |---|---|---|
 | HitRate@10 | **0.47** | 0.16 |
-| NDCG@10 | **0.257** | 0.077 |
+| NDCG@10 | **0.257** | 0.074 |
 
-**NDCG@10 uplift: 3.3×.** Reproduce with `make eval`.
+**NDCG@10 uplift: 3.5×.** Reproduce with `make eval`.
+
+> These are **single-seed (seed 0) point estimates**, not averaged over seeds, so
+> treat them as indicative rather than precise to the last digit. The popularity
+> baseline is computed from **training interactions only** (`Dataset.train_popularity`),
+> excluding each user's held-out test item — otherwise the baseline would peek at
+> the very positives it is scored against.
 
 ## Regression gates (`eval/thresholds.yaml`)
 
