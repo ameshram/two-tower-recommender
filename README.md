@@ -2,8 +2,8 @@
 
 **A two-tower neural retrieval recommender, implemented from scratch in NumPy** —
 embedding towers, BPR loss, hand-derived gradients (numerically checked) — with a
-leave-one-out evaluation harness that proves it beats a popularity baseline, on
-both synthetic and MovieLens data, gated in CI.
+leave-one-out evaluation harness that shows it beats a popularity baseline on
+synthetic data, gated in CI, plus a one-command MovieLens benchmark for real data.
 
 > **What this is.** An independent reference implementation on **synthetic and
 > public (MovieLens) data**, built to demonstrate two-tower retrieval and its
