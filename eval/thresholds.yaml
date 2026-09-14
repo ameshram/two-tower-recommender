@@ -1,0 +1,12 @@
+# Regression gates enforced by `python -m eval.run_eval --gate` (and in CI).
+# Set below the achieved values (hit@10≈0.47, ndcg@10≈0.26, uplift≈3.3×) with
+# headroom for seed/platform variance. Tightening these over time ratchets quality.
+
+# The model must retrieve the held-out positive in the top-10 for at least this
+# fraction of users (leave-one-out, 100 sampled negatives).
+min_hit_at_10: 0.30
+
+min_ndcg_at_10: 0.13
+
+# The whole point: personalization must beat "just recommend popular items".
+min_ndcg10_uplift_over_popularity: 1.8

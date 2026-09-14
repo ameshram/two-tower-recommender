@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-and-eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check .
+      - name: Unit tests (incl. gradient check)
+        run: pytest
+      - name: Train + eval with regression gates
+        # Offline on synthetic data — trains a two-tower and asserts it beats
+        # the popularity baseline. No dataset download, no network.
+        run: python -m eval.run_eval --gate
