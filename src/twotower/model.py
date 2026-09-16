@@ -12,8 +12,8 @@ Trained with the Bayesian Personalized Ranking (BPR) pairwise loss on triples
     L = mean_b  softplus( -(score(u,i) - score(u,j)) )
 
 The gradients are derived by hand (see docs/model.md) and checked numerically in
-tests/test_model.py. Implementing this in NumPy — rather than calling a
-framework — is deliberate: it demonstrates the mechanics. A PyTorch port is the
+tests/test_model.py. Implementing this in NumPy - rather than calling a
+framework - is deliberate: it demonstrates the mechanics. A PyTorch port is the
 production path (README → "What I'd change in v2").
 """
 

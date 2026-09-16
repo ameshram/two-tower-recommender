@@ -1,7 +1,7 @@
 """Download and extract the MovieLens 100k dataset (opt-in; requires network).
 
 MovieLens is a public research dataset from GroupLens (grouplens.org). It is not
-redistributed in this repo; this script fetches it on demand. Not run in CI —
+redistributed in this repo; this script fetches it on demand. Not run in CI -
 the eval uses synthetic data offline.
 
     python scripts/download_movielens.py --out data/ml-100k

@@ -4,7 +4,7 @@ MovieLens 100k loader (opt-in).
 Both produce a `Dataset` of implicit positive interactions per user. The
 synthetic generator draws interactions from a known latent-factor model, so a
 correctly-implemented two-tower can recover that structure and beat a popularity
-baseline — which is exactly what the eval asserts, with no network or download.
+baseline - which is exactly what the eval asserts, with no network or download.
 """
 
 from __future__ import annotations
@@ -31,7 +31,7 @@ class Dataset:
         return counts
 
     def train_popularity(self) -> np.ndarray:
-        """Item counts over TRAINING interactions only — excludes each user's
+        """Item counts over TRAINING interactions only - excludes each user's
         held-out last item (see ``leave_one_out``). The leave-one-out popularity
         baseline must be scored with this, not ``popularity()``: counting the
         test positives would leak the held-out item into the baseline it is
@@ -90,7 +90,7 @@ def make_synthetic(
 
     Each user u and item i get true latent vectors; interaction logits are
     U_true @ V_true.T plus a per-item popularity bias. Positives are sampled
-    per user from the softmax over items — so the data has both a popularity
+    per user from the softmax over items - so the data has both a popularity
     signal (which the baseline exploits) and user-specific structure (which
     only a personalized model can exploit).
     """
@@ -120,7 +120,7 @@ def load_movielens(path: str | Path, min_rating: float = 4.0) -> Dataset:
     data_file = root / "u.data"
     item_file = root / "u.item"
     if not data_file.exists():
-        raise FileNotFoundError(f"{data_file} not found — run scripts/download_movielens.py first")
+        raise FileNotFoundError(f"{data_file} not found - run scripts/download_movielens.py first")
 
     # u.data: user \t item \t rating \t timestamp  (ids are 1-indexed)
     rows = []

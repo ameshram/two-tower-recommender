@@ -2,7 +2,7 @@
 
 For each user we rank their held-out positive against a fixed set of sampled
 negatives, and report HitRate@K and NDCG@K. The popularity baseline is scored on
-the *same* candidate sets (same seed), so the comparison is apples-to-apples —
+the *same* candidate sets (same seed), so the comparison is apples-to-apples -
 the model has to beat "just recommend popular items" using personalization.
 """
 

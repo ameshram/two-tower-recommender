@@ -14,8 +14,8 @@ LOO protocol used in the implicit-feedback recommender literature (e.g. NCF).
 
 ## Metrics
 
-- **HitRate@K** — fraction of users whose held-out positive is in the top-K.
-- **NDCG@K** — position-discounted version (rewards ranking the positive higher).
+- **HitRate@K** - fraction of users whose held-out positive is in the top-K.
+- **NDCG@K** - position-discounted version (rewards ranking the positive higher).
 
 With a single relevant item, Recall@K ≡ HitRate@K, so we report HitRate + NDCG at
 K ∈ {5, 10}.
@@ -40,7 +40,7 @@ headline, and gate on it.
 > These are **single-seed (seed 0) point estimates**, not averaged over seeds, so
 > treat them as indicative rather than precise to the last digit. The popularity
 > baseline is computed from **training interactions only** (`Dataset.train_popularity`),
-> excluding each user's held-out test item — otherwise the baseline would peek at
+> excluding each user's held-out test item - otherwise the baseline would peek at
 > the very positives it is scored against.
 
 ## Regression gates (`eval/thresholds.yaml`)
@@ -59,7 +59,7 @@ Set below the achieved values with headroom for seed/platform variance;
 - **Synthetic (default, offline).** Interactions are drawn from a known
   latent-factor model with a popularity bias, so there is genuine personalized
   structure to recover *and* a strong popularity signal to beat. Deterministic,
-  fast, no download — this is what CI runs.
+  fast, no download - this is what CI runs.
 - **MovieLens 100k (`--movielens`).** Real ratings (≥4 = positive), ordered by
   timestamp, with genre features feeding the item tower. Download with
   `make data`. Not run in CI (network + slower), but the same eval applies.

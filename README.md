@@ -1,7 +1,7 @@
 # two-tower-recommender
 
-**A two-tower neural retrieval recommender, implemented from scratch in NumPy** —
-embedding towers, BPR loss, hand-derived gradients (numerically checked) — with a
+**A two-tower neural retrieval recommender, implemented from scratch in NumPy** -
+embedding towers, BPR loss, hand-derived gradients (numerically checked) - with a
 leave-one-out evaluation harness that shows it beats a popularity baseline on
 synthetic data, gated in CI, plus a one-command MovieLens benchmark for real data.
 
@@ -15,8 +15,8 @@ synthetic data, gated in CI, plus a one-command MovieLens benchmark for real dat
 ## Why two-tower retrieval
 
 Large-scale recommenders can't score millions of items per request with a heavy
-model. The standard pattern is a cheap **retrieval** stage — a *two-tower* model
-that embeds users and items into one space so relevance is a dot product — that
+model. The standard pattern is a cheap **retrieval** stage - a *two-tower* model
+that embeds users and items into one space so relevance is a dot product - that
 narrows millions of items to a few hundred, which a heavier ranker then re-scores.
 The two-tower trick: **item vectors are precomputed and indexed**, so serving is
 one user-tower pass plus an approximate-nearest-neighbor lookup.
@@ -31,19 +31,19 @@ flowchart LR
     IT -.->|precomputed, indexed| ANN[(ANN index<br/>→ retrieve top-N)]
 ```
 
-## From scratch — and correct
+## From scratch - and correct
 
 The model ([`model.py`](src/twotower/model.py)) is pure NumPy: embedding tables, a
 content-feature projection on the item tower, the BPR pairwise loss, and
 **analytic gradients derived by hand** (the derivation is in
-[docs/model.md](docs/model.md)). This is deliberate — it shows the mechanics
+[docs/model.md](docs/model.md)). This is deliberate - it shows the mechanics
 rather than hiding them behind `model.fit()`.
 
 To prove the gradients are actually right, `tests/test_model.py` runs a
 **numerical gradient check** (central differences vs. the analytic gradient,
 max abs error < 1e-6). A PyTorch port is the documented production path.
 
-## Evaluation — does it beat "just recommend popular items"?
+## Evaluation - does it beat "just recommend popular items"?
 
 Leave-one-out protocol (hold out each user's last interaction; rank it against
 100 sampled negatives), reporting HitRate@K and NDCG@K for the model **and** a
@@ -77,7 +77,7 @@ The identical eval applies; the synthetic run is what CI gates on (offline).
 ## Quickstart
 
 ```bash
-make quickstart           # install + tests (incl. gradient check) + gated eval — offline
+make quickstart           # install + tests (incl. gradient check) + gated eval - offline
 # or individually:
 make test                 # pytest
 make train                # train on synthetic, print model vs popularity
@@ -89,7 +89,7 @@ make eval                 # train + evaluate + regression gates
 ```
 src/twotower/
   data.py        Dataset; synthetic latent-factor generator; MovieLens loader; LOO split
-  model.py       TwoTowerModel — towers, BPR loss, hand-derived gradients, save/load
+  model.py       TwoTowerModel - towers, BPR loss, hand-derived gradients, save/load
   negatives.py   uniform negative sampling
   metrics.py     HitRate@K, NDCG@K, rank-of-positive
   evaluate.py    leave-one-out eval; model vs. popularity on identical candidates

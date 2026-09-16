@@ -49,7 +49,7 @@ loss, so the gradient check stays clean.
 
 The loss uses a **mean** reduction and embeddings init at scale 0.1, so the
 raw gradient magnitude is small; the tuned default `lr=3.0` is what that scale
-requires to converge in ~50 epochs. It is a hyperparameter, not a magic number —
+requires to converge in ~50 epochs. It is a hyperparameter, not a magic number -
 lower it if you increase the init scale or switch to a sum reduction. The eval
 (`make eval`) is what certifies the choice: it asserts the trained model beats
 the popularity baseline by a wide margin.
@@ -64,7 +64,7 @@ the popularity baseline by a wide margin.
 
 ## What I'd change in v2
 
-- **PyTorch port** with the same interface — mini-batch autograd, GPU, and
+- **PyTorch port** with the same interface - mini-batch autograd, GPU, and
   larger embeddings; this NumPy version exists to show the mechanics.
 - **In-batch / popularity-corrected negative sampling** (sampled softmax) instead
   of uniform negatives.

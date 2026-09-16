@@ -20,6 +20,6 @@ jobs:
       - name: Unit tests (incl. gradient check)
         run: pytest
       - name: Train + eval with regression gates
-        # Offline on synthetic data — trains a two-tower and asserts it beats
+        # Offline on synthetic data - trains a two-tower and asserts it beats
         # the popularity baseline. No dataset download, no network.
         run: python -m eval.run_eval --gate

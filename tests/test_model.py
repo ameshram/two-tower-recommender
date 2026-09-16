@@ -1,6 +1,6 @@
 """Model correctness: analytic gradients, learning, and persistence.
 
-The gradient check is the important one — it proves the hand-derived BPR
+The gradient check is the important one - it proves the hand-derived BPR
 gradients match a numerical finite-difference estimate, so the "from scratch"
 claim is actually correct, not just plausible.
 """

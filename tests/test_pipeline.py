@@ -1,6 +1,6 @@
 """End-to-end: training on synthetic data must beat the popularity baseline.
 
-This is the "did it actually learn" test — the whole point of a personalized
+This is the "did it actually learn" test - the whole point of a personalized
 recommender is to outperform recommending globally-popular items.
 """
 
